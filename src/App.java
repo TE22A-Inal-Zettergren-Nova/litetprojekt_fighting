@@ -11,7 +11,7 @@ public class App {
     public static String RED = "\u001B[31m";
     public static String GREEN = "\u001B[32m";
     public static String BLUE = "\u001B[34m";
-    public static String PURPLE = "\u001B[35m";
+    public static String PURPLE = "\u001B[36m";
 
     //metod för när spelaren attackerar//
     static void spelareAttack(){
@@ -145,40 +145,62 @@ public static void main(String[] args) throws Exception {
         System.out.println(RED+"Meny \n 1. Starta \n 2. Avsluta"+RESET);
         int startval = tb.nextInt();
 
-        while (startval!=3) {
-            if (startval==1)
-            {
-                System.out.println("Spelet startar...");
-                Thread.sleep(2000);
-                break;
+            while (startval!=3) {
+                if (startval==1)
+                {
+                    System.out.println("Spelet startar...");
+                    Thread.sleep(2000);
+                    break;
+                }
+
+                else if(startval==2)
+                {
+                    System.out.println("Spelet avslutas...");
+                    System.exit(0);
+                    break;
+                }
+
+                else{
+                    System.out.println("Detta val finns inte");
+                    main(args);
+                    break;
+                }
             }
 
-            else if(startval==2)
-            {
-                System.out.println("Spelet avslutas...");
-                System.exit(0);
-                break;
-            }
-
-            else{
-                System.out.println("Detta val finns inte");
-                main(args);
-                break;
-            }
-        }
-
-        Random rand = new Random(); 
-        int motståndareTal = rand.nextInt(10); 
-        System.out.println(GREEN+"Ni ska nu avgöra vem som ska BÖRJA"+RESET);
-        System.out.println("Välj ett tal mellan 1-10");
-        int spelareTal = tb.nextInt();
-        System.out.println(GREEN+"Du väljer: "+spelareTal+RESET);
-        System.out.println(GREEN+"Motståndaren väljer: "+motståndareTal+RESET);
+            Random rand = new Random(); 
+            int motståndareTal = rand.nextInt(10); 
+            System.out.println(GREEN+"Ni ska nu avgöra vem som ska BÖRJA"+RESET);
+            System.out.println("Välj ett tal mellan 1-10");
+            int spelareTal = tb.nextInt();
+            System.out.println(GREEN+"Du väljer: "+spelareTal+RESET);
+            System.out.println(GREEN+"Motståndaren väljer: "+motståndareTal+RESET);
         
+            if (spelareTal>=motståndareTal) {
+                System.out.println("Ditt tal är större du börjar");
+                Thread.sleep(2500);
+                System.out.println(BLUE+"\nInfo om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n"+RESET); 
+            
+                do{
+                    System.out.println("Din tur: ");
+                    spelareAttack();
+                    System.out.println("\nMotståndarens tur:");
+                    motståndareAttack();
+                } while ((spelareHP >0) && (motståndareHP >0));
+            
+            }
+            else{
+                System.out.println("Motståndarens tal är större, den börjar");
+                Thread.sleep(2500);
+                do{
+                    motståndareAttack();
+                    System.out.println("\nDin tur:");
+                    spelareAttack();
 
+                } while ((spelareHP >0) && (motståndareHP >0));
+            }
              
          }
-        }
+    }
     
 
     
