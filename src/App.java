@@ -1,37 +1,19 @@
 import java.util.Scanner;
 import java.util.Random;
 
+   
 public class App {
+    
+    public static int motståndareHP=100;
+    public static int spelareHP=100;
+    public static String RESET = "\u001B[0m";
+    public static String RED = "\u001B[31m";
+    public static String GREEN = "\u001B[32m";
+    public static String BLUE = "\u001B[34m";
+    public static String PURPLE = "\u001B[35m";
 
-            
-public static void main(String[] args) throws Exception {
-
+    static void spelareAttack(){
         Scanner tb = new Scanner(System.in);
-        System.out.println("Meny \n 1. Starta \n 2. Avsluta");
-        int startval = tb.nextInt();
-
-        while (startval!=3) {
-            if (startval==1)
-            {
-                System.out.println("Spelet startar...");
-                break;
-            }
-
-            else if(startval==2)
-            {
-                System.out.println("Spelet avslutas...");
-                System.exit(0);
-                break;
-            }
-
-            else{
-                System.out.println("Detta val finns inte");
-                main(args);
-                break;
-            }
-        }
-        
-        //chansen för träff//
         Random rand = new Random(); 
         //attack 2//
         int chansA2 = 5;
@@ -45,13 +27,8 @@ public static void main(String[] args) throws Exception {
         //attack 5//
         int chansA5 = 20;
         int träffA5 = rand.nextInt(chansA5);
-
-        int motståndareHP = 100;
-        int spelareHP = 100;
  
-        System.out.println("Info om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n");
- 
-            System.out.println("Välj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n");
+            System.out.println(PURPLE+"Välj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n"+RESET);
             int val = tb.nextInt(); 
 
             switch (val) {
@@ -95,11 +72,40 @@ public static void main(String[] args) throws Exception {
                 default:
                     System.out.println("Detta val finns inte välj något av ovanstående");
                     break;
-                
+                }
+    }
+    
+public static void main(String[] args) throws Exception {
+
+        Scanner tb = new Scanner(System.in);
+        System.out.println("Meny \n 1. Starta \n 2. Avsluta");
+        int startval = tb.nextInt();
+
+        while (startval!=3) {
+            if (startval==1)
+            {
+                System.out.println("Spelet startar...");
+                break;
+            }
+
+            else if(startval==2)
+            {
+                System.out.println("Spelet avslutas...");
+                System.exit(0);
+                break;
+            }
+
+            else{
+                System.out.println("Detta val finns inte");
+                main(args);
+                break;
+            }
+        }
+        
              
          }
         }
-    }
+    
 
     
 
