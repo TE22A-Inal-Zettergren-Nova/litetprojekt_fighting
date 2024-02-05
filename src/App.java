@@ -4,6 +4,7 @@ import java.util.Random;
    
 public class App {
 
+    //public variabler//
     public static int motståndareHP=100;
     public static int spelareHP=100;
     public static String RESET = "\u001B[0m";
@@ -12,6 +13,7 @@ public class App {
     public static String BLUE = "\u001B[34m";
     public static String PURPLE = "\u001B[35m";
 
+    //metod för när spelaren attackerar//
     static void spelareAttack(){
         Scanner tb = new Scanner(System.in);
         Random rand = new Random(); 
@@ -75,7 +77,7 @@ public class App {
                 }
             }
     
-            //metod för när datorn attackerar//
+    //metod för när datorn attackerar//
     static void motståndareAttack(){
 
         Random rand = new Random(); 
@@ -138,14 +140,16 @@ public class App {
     
 public static void main(String[] args) throws Exception {
 
+        //start meny//
         Scanner tb = new Scanner(System.in);
-        System.out.println("Meny \n 1. Starta \n 2. Avsluta");
+        System.out.println(RED+"Meny \n 1. Starta \n 2. Avsluta"+RESET);
         int startval = tb.nextInt();
 
         while (startval!=3) {
             if (startval==1)
             {
                 System.out.println("Spelet startar...");
+                Thread.sleep(2000);
                 break;
             }
 
@@ -162,7 +166,16 @@ public static void main(String[] args) throws Exception {
                 break;
             }
         }
+
+        Random rand = new Random(); 
+        int motståndareTal = rand.nextInt(10); 
+        System.out.println(GREEN+"Ni ska nu avgöra vem som ska BÖRJA"+RESET);
+        System.out.println("Välj ett tal mellan 1-10");
+        int spelareTal = tb.nextInt();
+        System.out.println(GREEN+"Du väljer: "+spelareTal+RESET);
+        System.out.println(GREEN+"Motståndaren väljer: "+motståndareTal+RESET);
         
+
              
          }
         }
