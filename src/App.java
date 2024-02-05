@@ -3,7 +3,7 @@ import java.util.Random;
 
    
 public class App {
-    
+
     public static int motståndareHP=100;
     public static int spelareHP=100;
     public static String RESET = "\u001B[0m";
@@ -28,8 +28,8 @@ public class App {
         int chansA5 = 20;
         int träffA5 = rand.nextInt(chansA5);
  
-            System.out.println(PURPLE+"Välj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n"+RESET);
-            int val = tb.nextInt(); 
+        System.out.println(PURPLE+"Välj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n"+RESET);
+        int val = tb.nextInt(); 
 
             switch (val) {
                 case 1:
@@ -73,6 +73,67 @@ public class App {
                     System.out.println("Detta val finns inte välj något av ovanstående");
                     break;
                 }
+            }
+    
+            //metod för när datorn attackerar//
+    static void motståndareAttack(){
+
+        Random rand = new Random(); 
+        //attack 2//
+        int chansA2 = 5;
+        int träffA2 = rand.nextInt(chansA2);
+        //attack 3//
+        int chansA3 = 2;
+        int träffA3 = rand.nextInt(chansA3);
+        //attack 4//
+        int chansA4 = 5;
+        int träffA4 = rand.nextInt(chansA4);
+        //attack 5//
+        int chansA5 = 20;
+        int träffA5 = rand.nextInt(chansA5); 
+ 
+            int motståndareVAL = rand.nextInt(10);
+
+            switch (motståndareVAL) {
+                case 1:
+                    System.out.println("Motståndaren gjorde 5 skada");
+                    System.out.println("Du har nu: " + (spelareHP= spelareHP -5) + "HP");
+                    break;
+                case 2:
+                    if (träffA2 == 2) {
+                        System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
+                    }
+                    else{
+                        System.out.println("Motståndaren gjorde 15 skada \nDu har nu: " + (spelareHP=spelareHP - 15) + "HP");
+               
+                     }
+                    break;
+                case 3:
+                    if (träffA3 == 1) {
+                        System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
+                    }   
+                    else{
+                        System.out.println("Motståndaren gjorde 25 skada \nDu har nu: " + (spelareHP=spelareHP- 25) + "HP");
+                    } 
+                    break;
+                case 4:
+                    if (träffA4 == 1) {
+                        System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
+                    }
+                    else{
+                        System.out.println("Motståndaren gjorde 50 skada \nDu har nu: " + (spelareHP=spelareHP - 50) + "HP");
+                    }
+                    break;
+                case 5:
+                    if (träffA5 == 20) {
+                        System.out.println("Motståndaren gjorde 100 skada \nDu har nu: " + (spelareHP=spelareHP - 100) + "HP");
+                    }
+                    else{
+                        System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
+                    } 
+                    break;
+                }
+    
     }
     
 public static void main(String[] args) throws Exception {
