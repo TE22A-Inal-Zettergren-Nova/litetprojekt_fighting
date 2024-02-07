@@ -7,11 +7,14 @@ public class App {
     //public variabler//
     public static int motståndareHP=100;
     public static int spelareHP=100;
+
     public static String RESET = "\u001B[0m";
     public static String RED = "\u001B[31m";
     public static String GREEN = "\u001B[32m";
     public static String BLUE = "\u001B[34m";
-    public static String PURPLE = "\u001B[36m";
+    public static String YELLOW = "\u001B[33m";
+    public static String CYAN = "\u001B[36m";
+    
 
     //metod för när spelaren attackerar//
     static void spelareAttack(){
@@ -30,7 +33,7 @@ public class App {
         int chansA5 = 20;
         int träffA5 = rand.nextInt(chansA5);
  
-        System.out.println(PURPLE+"Välj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n"+RESET);
+        System.out.println(CYAN+"Välj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n"+CYAN);
         int val = tb.nextInt(); 
 
             switch (val) {
@@ -94,14 +97,14 @@ public class App {
         int chansA5 = 20;
         int träffA5 = rand.nextInt(chansA5); 
  
-            int motståndareVAL = rand.nextInt(10);
+        int motståndareVAL = rand.nextInt(4);
 
             switch (motståndareVAL) {
-                case 1:
+                case 0:
                     System.out.println("Motståndaren gjorde 5 skada");
                     System.out.println("Du har nu: " + (spelareHP= spelareHP -5) + "HP");
                     break;
-                case 2:
+                case 1:
                     if (träffA2 == 2) {
                         System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
                     }
@@ -110,7 +113,7 @@ public class App {
                
                      }
                     break;
-                case 3:
+                case 2:
                     if (träffA3 == 1) {
                         System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
                     }   
@@ -118,7 +121,7 @@ public class App {
                         System.out.println("Motståndaren gjorde 25 skada \nDu har nu: " + (spelareHP=spelareHP- 25) + "HP");
                     } 
                     break;
-                case 4:
+                case 3:
                     if (träffA4 == 1) {
                         System.out.println("Motståndaren missade \nDu har fortfarande: " + spelareHP +"HP");
                     }
@@ -126,7 +129,7 @@ public class App {
                         System.out.println("Motståndaren gjorde 50 skada \nDu har nu: " + (spelareHP=spelareHP - 50) + "HP");
                     }
                     break;
-                case 5:
+                case 4:
                     if (träffA5 == 20) {
                         System.out.println("Motståndaren gjorde 100 skada \nDu har nu: " + (spelareHP=spelareHP - 100) + "HP");
                     }
@@ -137,12 +140,11 @@ public class App {
                 }
     
     }
-    
 public static void main(String[] args) throws Exception {
 
         //start meny//
         Scanner tb = new Scanner(System.in);
-        System.out.println(RED+"Meny \n 1. Starta \n 2. Avsluta"+RESET);
+        System.out.println(BLUE+"Meny \n 1. Starta \n 2. Avsluta"+RESET);
         int startval = tb.nextInt();
 
             while (startval!=3) {
@@ -170,7 +172,7 @@ public static void main(String[] args) throws Exception {
             Random rand = new Random(); 
             int motståndareTal = rand.nextInt(10); 
             System.out.println(GREEN+"Ni ska nu avgöra vem som ska BÖRJA"+RESET);
-            System.out.println("Välj ett tal mellan 1-10");
+            System.out.println(GREEN+"Välj ett tal mellan 1-10"+RESET);
             int spelareTal = tb.nextInt();
             System.out.println(GREEN+"Du väljer: "+spelareTal+RESET);
             System.out.println(GREEN+"Motståndaren väljer: "+motståndareTal+RESET);
@@ -178,13 +180,16 @@ public static void main(String[] args) throws Exception {
             if (spelareTal>=motståndareTal) {
                 System.out.println("Ditt tal är större du börjar");
                 Thread.sleep(2500);
-                System.out.println(BLUE+"\nInfo om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n"+RESET); 
+                System.out.println(YELLOW+"\nInfo om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n"+RESET); 
             
                 do{
+                    Thread.sleep(1500);
                     System.out.println("Din tur: ");
                     spelareAttack();
                     System.out.println("\nMotståndarens tur:");
                     motståndareAttack();
+                    System.out.println("");
+
                 } while ((spelareHP >0) && (motståndareHP >0));
             
             }
@@ -192,15 +197,29 @@ public static void main(String[] args) throws Exception {
                 System.out.println("Motståndarens tal är större, den börjar");
                 Thread.sleep(2500);
                 do{
+                    Thread.sleep(1500);
                     motståndareAttack();
                     System.out.println("\nDin tur:");
                     spelareAttack();
+                    System.out.println("");
 
                 } while ((spelareHP >0) && (motståndareHP >0));
+
+                if (spelareHP <0) {
+                    System.out.println(RED+"Rackarns, motståndaren vann... :("+RESET);
+
+                    }
+
+                else{
+                    System.out.println(GREEN+"Yippe, du vann!"+RESET);
+
+                }
+                    
+                }
             }
              
          }
-    }
+    
     
 
     
