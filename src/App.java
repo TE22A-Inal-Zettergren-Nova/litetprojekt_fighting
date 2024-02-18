@@ -214,7 +214,6 @@ public static void main(String[] args) throws Exception {
                 Thread.sleep(2500);
                 System.out.println(YELLOW+"\nInfo om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n"+RESET); 
             
-            
                 while ((spelareHP >=0) && (motståndareHP >=0)){
                     Thread.sleep(2000);
                     spelareAttack();
@@ -222,11 +221,20 @@ public static void main(String[] args) throws Exception {
                     else if (motståndareHP<=5 && motståndareHP>0) {fem_HP_motståndare();}
                     motståndareAttack();
                     if (spelareHP<=5 && spelareHP>0) {fem_HP_spelare();}
-                    }}
+                    }
+                }
             
   
             else{
                 
+                while ((spelareHP >=0) && (motståndareHP >=0)){
+                    Thread.sleep(2000);
+                    motståndareAttack();
+                    if(motståndareHP<=0){break;}
+                    else if (spelareHP<=5 && spelareHP>0) {fem_HP_spelare();}
+                    spelareAttack();
+                    if (motståndareHP<=5 && motståndareHP>0) {fem_HP_motståndare();}
+                    }
 
                 }
 
