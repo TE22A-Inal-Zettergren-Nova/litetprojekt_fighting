@@ -224,9 +224,8 @@ public static void main(String[] args) throws Exception {
                     }
                 }
             
-  
             else{
-                
+
                 while ((spelareHP >=0) && (motståndareHP >=0)){
                     Thread.sleep(2000);
                     motståndareAttack();
@@ -248,8 +247,28 @@ public static void main(String[] args) throws Exception {
 
                 }
 
+                System.out.println("Vill du spela igen? (ja/nej)");
+                String svar = tb.nextLine(); //denna gör så att spelaren hinner svara// Finns säkert bättre sätt men det här funkar bra//
+                String startaOM = tb.nextLine();
 
-                    
+
+                if (startaOM.equalsIgnoreCase("ja")) {
+                    System.out.println("Spelet startar om...");
+                    Thread.sleep(1000);
+                    main(args);
+                }
+
+                else if (startaOM.equalsIgnoreCase("nej")) {
+                    System.out.println("Spelet avslutas...");
+                    Thread.sleep(1000);
+                    System.exit(0);
+                }
+
+                else{
+                    System.out.println("Du valde ingen av dom idiot, jag bestämmer o du får ta o köra spelet igen");
+                    Thread.sleep(1000);
+                    main(args);
+                }
                 }
             }
              
