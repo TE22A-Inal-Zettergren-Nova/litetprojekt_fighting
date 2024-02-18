@@ -215,28 +215,20 @@ public static void main(String[] args) throws Exception {
                 System.out.println(YELLOW+"\nInfo om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n"+RESET); 
             
             
-                do{
-                    Thread.sleep(1500);
-                    System.out.println("Din tur: ");
+                while ((spelareHP >=0) && (motståndareHP >=0)){
+                    Thread.sleep(2000);
                     spelareAttack();
-                    System.out.println("\nMotståndarens tur:");
+                    if(motståndareHP<=0){break;}
+                    else if (motståndareHP<=5 && motståndareHP>0) {fem_HP_motståndare();}
                     motståndareAttack();
-                    System.out.println("");
-
-                } while ((spelareHP >0) && (motståndareHP >0));
+                    if (spelareHP<=5 && spelareHP>0) {fem_HP_spelare();}
+                    }}
             
-            }
+  
             else{
-                System.out.println("Motståndarens tal är större, motståndaren börjar");
-                Thread.sleep(2500);
-                do{
-                    Thread.sleep(1500);
-                    motståndareAttack();
-                    System.out.println("\nDin tur:");
-                    spelareAttack();
-                    System.out.println("");
-                    
-                } while ((spelareHP >0) && (motståndareHP >0));
+                
+
+                }
 
                 if (spelareHP <0) {
                     System.out.println(RED+"Rackarns, motståndaren vann... :("+RESET);
@@ -253,7 +245,7 @@ public static void main(String[] args) throws Exception {
                 }
             }
              
-         }
+         
     
     
 
