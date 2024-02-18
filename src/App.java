@@ -110,7 +110,6 @@ public class App {
                     }
                     else{
                         System.out.println("Motståndaren gjorde 15 skada \nDu har nu: " + (spelareHP=spelareHP - 15) + "HP");
-               
                      }
                     break;
                 case 2:
@@ -138,8 +137,29 @@ public class App {
                     } 
                     break;
                 }
+            }
+
+    static void fem_HP_spelare(){
+            
+        Scanner tb = new Scanner(System.in);
+        System.out.println("Du har jävligt lågt HP, det är stor chans att du förlorar(sämst)");
+        System.out.println("Vad väljer du: \n 1. Hela dig med 25HP \n 2. Gör 30DMG på din motståndare");
+        int HPval = tb.nextInt();
+
+        if (HPval==1) {
+            System.out.println("Du hela dig med 25HP \n Du har nu: "+ (spelareHP=spelareHP+25)+"HP");
+        }
+        else if (HPval==2) {
+            System.out.println("Du gjorde 30DMG \n Din motståndare har nu: "+(motståndareHP=motståndareHP-30)+"HP");
+        }
+        else{
+            System.out.println("Detta val finns inte, försök igen");
+            fem_HP_spelare();
+        }
+            
     
     }
+    
 public static void main(String[] args) throws Exception {
 
         //start meny//
@@ -182,6 +202,7 @@ public static void main(String[] args) throws Exception {
                 Thread.sleep(2500);
                 System.out.println(YELLOW+"\nInfo om attacker: \n Poke: 100% chans för träff, 5 DMG\n Punch: 80% chans för träff, 15 DMG\n Kick: 50% chans för träff, 25 DMG\n Stab: 20% chans för träff, 50 DMG\n Sword slash: 5% chans för träff, 100 DMG\n"+RESET); 
             
+            
                 do{
                     Thread.sleep(1500);
                     System.out.println("Din tur: ");
@@ -194,7 +215,7 @@ public static void main(String[] args) throws Exception {
             
             }
             else{
-                System.out.println("Motståndarens tal är större, den börjar");
+                System.out.println("Motståndarens tal är större, motståndaren börjar");
                 Thread.sleep(2500);
                 do{
                     Thread.sleep(1500);
@@ -202,7 +223,7 @@ public static void main(String[] args) throws Exception {
                     System.out.println("\nDin tur:");
                     spelareAttack();
                     System.out.println("");
-
+                    
                 } while ((spelareHP >0) && (motståndareHP >0));
 
                 if (spelareHP <0) {
@@ -214,6 +235,8 @@ public static void main(String[] args) throws Exception {
                     System.out.println(GREEN+"Yippe, du vann!"+RESET);
 
                 }
+
+
                     
                 }
             }
