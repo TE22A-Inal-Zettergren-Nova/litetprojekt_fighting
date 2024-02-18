@@ -156,7 +156,19 @@ public class App {
             System.out.println("Detta val finns inte, försök igen");
             fem_HP_spelare();
         }
-            
+
+    }
+    
+    static void fem_HP_motståndare(){
+        double HPval=Math.floor(Math.random() * 1);
+
+        if (HPval==0) {
+            System.out.println("Motståndaren hela sig med 25HP \nMotståndaren har nu: "+ (motståndareHP=motståndareHP+25)+"HP");
+        }
+        else if (HPval==1) {
+            System.out.println("Motståndaren gjorde 30DMG \nDu har nu: "+(spelareHP=spelareHP-30)+"HP");
+        }
+
     
     }
     
