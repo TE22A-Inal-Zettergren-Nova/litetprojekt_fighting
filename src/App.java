@@ -16,24 +16,24 @@ public class App {
     public static String CYAN = "\u001B[36m";
     public static String PURPLE = "\u001B[35m";
 
-    
+    static void HP_reset(){
+        motståndareHP=100;
+        spelareHP=100;
+    }
 
     //metod för när spelaren attackerar//
     static void spelareAttack(){
         Scanner tb = new Scanner(System.in);
-        Random rand = new Random(); 
+
         //attack 2//
-        int chansA2 = 5;
-        int träffA2 = rand.nextInt(chansA2);
+        int träffA2 = (int)((Math.random() * 5)+1);
         //attack 3//
-        int chansA3 = 2;
-        int träffA3 = rand.nextInt(chansA3);
+        int träffA3 = (int)((Math.random() * 2)+1);
         //attack 4//
-        int chansA4 = 5;
-        int träffA4 = rand.nextInt(chansA4);
+        int träffA4 = (int)((Math.random() * 5)+1);
         //attack 5//
-        int chansA5 = 20;
-        int träffA5 = rand.nextInt(chansA5);
+        int träffA5 = (int)((Math.random() * 20)+1);
+  
  
         System.out.println(GREEN+"\nVälj din attack: \n 1. Poke \n 2. Punch \n 3. Kick \n 4. Stab \n 5. Sword slash\n"+RESET);
         int val = tb.nextInt(); 
@@ -64,11 +64,11 @@ public class App {
                     break;
                 case 4:
                     if (träffA4 == 1) {
-                        System.out.println(PURPLE+"Du missade \nMotståndaren har fortfarande: " + motståndareHP +"HP\n"+RESET);
-                    }
-                    else{
                         System.out.println(RED+"Du träffa motståndaren och  gjorde 50 skada "+RESET);
                         System.out.println(PURPLE+"Motståndaren har nu: " + (motståndareHP=motståndareHP - 50) + "HP\n"+RESET);
+                    }
+                    else{
+                        System.out.println(PURPLE+"Du missade \nMotståndaren har fortfarande: " + motståndareHP +"HP\n"+RESET);
                     }
                     break;
                 case 5:
@@ -90,21 +90,18 @@ public class App {
     //metod för när datorn attackerar//
     static void motståndareAttack(){
 
-        Random rand = new Random(); 
         //attack 2//
-        int chansA2 = 5;
-        int träffA2 = rand.nextInt(chansA2);
+        int träffA2 = (int)((Math.random() * 5)+1);
         //attack 3//
-        int chansA3 = 2;
-        int träffA3 = rand.nextInt(chansA3);
+        int träffA3 = (int)((Math.random() * 2)+1);
         //attack 4//
-        int chansA4 = 5;
-        int träffA4 = rand.nextInt(chansA4);
+        int träffA4 = (int)((Math.random() * 5)+1);
         //attack 5//
-        int chansA5 = 20;
-        int träffA5 = rand.nextInt(chansA5); 
+        int träffA5 = (int)((Math.random() * 20)+1);
+
  
-        int motståndareVAL = rand.nextInt(4);
+        int motståndareVAL = (int)(Math.random() * 4);
+
 
             switch (motståndareVAL) {
                 case 0:
@@ -271,6 +268,7 @@ public static void main(String[] args) throws Exception {
                 if (startaOM.equalsIgnoreCase("ja")) {
                     System.out.println("Spelet startar om...");
                     Thread.sleep(1000);
+                    HP_reset();
                     main(args);
                 }
 
