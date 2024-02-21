@@ -241,7 +241,7 @@ public static void main(String[] args) throws Exception {
                 while ((spelareHP >=0) && (motståndareHP >=0)){
                     Thread.sleep(2000);
                     motståndareAttack();
-                    if(motståndareHP<=0){break;}
+                    if(spelareHP<=0){break;}
                     else if (spelareHP<=5 && spelareHP>0) {fem_HP_spelare();}
                     Thread.sleep(1500);
                     spelareAttack();
@@ -250,41 +250,41 @@ public static void main(String[] args) throws Exception {
 
                 }
 
-                if (spelareHP <0) {
-                    System.out.println(RED+"Rackarns, motståndaren vann... :("+RESET);
-
-                    }
-
-                else{
-                    System.out.println(GREEN+"Yippe, du vann!"+RESET);
+            if (spelareHP <0) {
+                System.out.println(RED+"Rackarns, motståndaren vann... :("+RESET);
 
                 }
 
-                System.out.println("Vill du spela igen? (ja/nej)");
-                String svar = tb.nextLine(); //denna gör så att spelaren hinner svara// Finns säkert bättre sätt men det här funkar bra//
-                String startaOM = tb.nextLine();
+            else{
+                System.out.println(GREEN+"Yippe, du vann!"+RESET);
 
-
-                if (startaOM.equalsIgnoreCase("ja")) {
-                    System.out.println("Spelet startar om...");
-                    Thread.sleep(1000);
-                    HP_reset();
-                    main(args);
-                }
-
-                else if (startaOM.equalsIgnoreCase("nej")) {
-                    System.out.println("Spelet avslutas...");
-                    Thread.sleep(1000);
-                    System.exit(0);
-                }
-
-                else{
-                    System.out.println("Du valde ingen av dom idiot, jag bestämmer o du får ta o köra spelet igen");
-                    Thread.sleep(1000);
-                    main(args);
-                }
-                }
             }
+
+            System.out.println("Vill du spela igen? (ja/nej)");
+            String svar = tb.nextLine(); //denna gör så att spelaren hinner svara// Finns säkert bättre sätt men det här funkar bra//
+            String startaOM = tb.nextLine();
+
+
+            if (startaOM.equalsIgnoreCase("ja")) {
+                System.out.println("Spelet startar om...");
+                Thread.sleep(1000);
+                HP_reset();
+                main(args);
+            }
+
+            else if (startaOM.equalsIgnoreCase("nej")) {
+                System.out.println("Spelet avslutas...");
+                Thread.sleep(1000);
+                System.exit(0);
+            }
+
+            else{
+                System.out.println("Du valde ingen av dom idiot, jag bestämmer o du får ta o köra spelet igen");
+                Thread.sleep(1000);
+                main(args);
+            }
+        }
+    }
              
          
     
